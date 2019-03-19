@@ -1,0 +1,15 @@
+<form [formGroup]="addPostFG">
+  <div class="form-group">
+    <label for="usr">Header:</label>
+    <input type="text" class="form-control" id="usr" [formControl]="addPostFG.controls['Header']">
+  </div>
+  <div class="form-group">
+    <label for="comment">Content:</label>
+    <textarea class="form-control" rows="5" id="comment" [formControl]="addPostFG.controls['Content']"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="usr">ImageURL:</label>
+    <input type="text" class="form-control" id="usr" [formControl]="addPostFG.controls['ImageURL']">
+  </div>
+  <button type="button" class="btn btn-outline-success" (click)="addBlog(addPostFG)">Success</button>
+</form>

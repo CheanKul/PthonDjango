@@ -1,0 +1,21 @@
+<table class=" table table-bordered table-hover table-dark ">
+  <thead>
+    <tr>
+      <th>Header</th>
+      <th>Content</th>
+      <th>ImageURL</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let blog of http.bList">
+      <td>{{blog.Header}}</td>
+      <td>{{blog.Content}}</td>
+      <td><img [src]="blog.ImageURL" class="rounded" width="100px" height="100px"></td>
+      <td><button class="btn btn-primary" (click)="EditPost(blog.id)">
+          <span class="spinner-grow spinner-grow-sm"></span>
+          Loading..
+        </button></td>
+    </tr>
+  </tbody>
+</table>
