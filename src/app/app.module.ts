@@ -9,12 +9,14 @@ import { BloglistComponent } from './bloglist/bloglist.component';
 import { HttpService } from './Shared/http.service';
 import { BlogaddComponent } from './blogadd/blogadd.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BloglistComponent,
-    BlogaddComponent
+    BlogaddComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
