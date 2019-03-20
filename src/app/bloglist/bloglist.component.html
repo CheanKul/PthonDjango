@@ -1,21 +1,63 @@
-<table class=" table table-bordered table-hover table-dark ">
-  <thead>
-    <tr>
-      <th>Header</th>
-      <th>Content</th>
-      <th>ImageURL</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let blog of http.bList">
-      <td>{{blog.Header}}</td>
-      <td>{{blog.Content}}</td>
-      <td><img [src]="blog.ImageURL" class="rounded" width="100px" height="100px"></td>
-      <td><button class="btn btn-primary" (click)="EditPost(blog.id)">
-          <span class="spinner-grow spinner-grow-sm"></span>
-          Loading..
-        </button></td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <app-blogadd></app-blogadd>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<div class="container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef> Weight </th>
+          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef> Symbol </th>
+          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+</div>
+<!-- [routerLink]="['/updateblog',blog.id]" -->

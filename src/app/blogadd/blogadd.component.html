@@ -1,4 +1,5 @@
 <form [formGroup]="addPostFG" class="container">
+  <input type="text" class="form-control" hidden id="usr" [formControl]="addPostFG.controls['Id']">
   <div class="form-group">
     <label for="usr">Header:</label>
     <input type="text" class="form-control" id="usr" [formControl]="addPostFG.controls['Header']">
@@ -11,5 +12,8 @@
     <label for="usr">ImageURL:</label>
     <input type="text" class="form-control" id="usr" [formControl]="addPostFG.controls['ImageURL']">
   </div>
-  <button type="button" class="btn btn-outline-success" (click)="addBlog(addPostFG)">Success</button>
+  <button type="button" [hidden]="swapButton" class="btn btn-outline-success" (click)="addBlog(addPostFG)">Add</button>
+  <button type="button" [hidden]="!swapButton" class="btn btn-outline-success"
+    (click)="updateBlog(addPostFG)">Update</button>
+
 </form>

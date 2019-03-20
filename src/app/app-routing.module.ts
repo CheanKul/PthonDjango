@@ -5,9 +5,10 @@ import { BlogaddComponent } from './blogadd/blogadd.component';
 import { BlogComponent } from './blog/blog.component';
 
 const routes: Routes = [
-  { path: '', component: BlogComponent },
   { path: 'listblog', component: BloglistComponent },
-  { path: 'updateblog', component: BlogaddComponent }
+  { path: 'updateblog/:id', component: BlogaddComponent },
+  { path: 'updateblog', component: BlogaddComponent },
+  { path: '', component: BlogComponent, pathMatch: "full" },
 ];
 
 @NgModule({
