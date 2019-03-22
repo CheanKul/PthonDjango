@@ -50,4 +50,12 @@ export class HttpService {
       .pipe(map((response: Response) => <any>response));
   }
 
+  auth(url: string,model): Observable<any> {
+    return this.httpClient.post(url, model, headers)
+      .pipe(map((response: Response) => {
+        console.log(response);
+      }));
+  }
+
+
 }

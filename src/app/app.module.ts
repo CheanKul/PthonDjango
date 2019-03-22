@@ -10,21 +10,29 @@ import { HttpService } from './Shared/http.service';
 import { BlogaddComponent } from './blogadd/blogadd.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BlogComponent } from './blog/blog.component';
+import { MaterialModule } from './material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BloglistComponent,
     BlogaddComponent,
-    BlogComponent
+    BlogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule,
+    BrowserAnimationsModule
+
   ],
   providers: [HttpService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [BlogaddComponent]
 })
 export class AppModule { }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as Material from "@angular/material";
-
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +14,9 @@ import * as Material from "@angular/material";
     Material.MatDatepickerModule,
     Material.MatNativeDateModule,
     Material.MatButtonModule,
+    Material.MatTableModule,
+    Material.MatDialogModule,
+    Material.MatCardModule
   ],
   exports: [
     Material.MatToolbarModule,
@@ -27,6 +29,11 @@ import * as Material from "@angular/material";
     Material.MatDatepickerModule,
     Material.MatNativeDateModule,
     Material.MatButtonModule,
+    Material.MatTableModule,
+    Material.MatDialogModule,
+    Material.MatCardModule
+
+
   ],
   declarations: []
 })

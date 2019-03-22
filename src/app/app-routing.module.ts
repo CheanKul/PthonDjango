@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { BloglistComponent } from './bloglist/bloglist.component';
 import { BlogaddComponent } from './blogadd/blogadd.component';
 import { BlogComponent } from './blog/blog.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'listblog', component: BloglistComponent },
   { path: 'updateblog/:id', component: BlogaddComponent },
   { path: 'updateblog', component: BlogaddComponent },
+  { path: 'login', component: LoginComponent },
   { path: '', component: BlogComponent, pathMatch: "full" },
 ];
 

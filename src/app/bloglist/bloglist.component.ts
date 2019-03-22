@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../Shared/http.service';
 import { BloglistService } from './bloglist.service';
 import { Blog } from '../Models/BlogModel';
+import { MatTableDataSource, MatDialog } from '@angular/material';
+import { BlogaddComponent } from '../blogadd/blogadd.component';
 
 @Component({
   selector: 'app-bloglist',
@@ -12,16 +14,25 @@ import { Blog } from '../Models/BlogModel';
 })
 export class BloglistComponent implements OnInit, OnDestroy {
 
-  // displayedColumns: string[] = ;
+  displayedColumnss: string[] = ['Actions']
 
-  dataSource: Blog[] = [];
+  dataSource: MatTableDataSource<Blog>;
+  displayedColumns: string[];
 
-  constructor(private http: BloglistService, private common: HttpService) { }
+  constructor(public dialog: MatDialog, private http: BloglistService, private common: HttpService) { }
 
   ngOnInit() {
+    this.getAllBlogs();
+  }
+
+
+  getAllBlogs() {
+    this.displayedColumns = [];
     this.http.getAllPosts().subscribe(
       (list: Blog[]) => {
-        this.dataSource = list;
+        this.dataSource = new MatTableDataSource(list);;
+        this.displayedColumns = [...Object.keys(list[0]), ...this.displayedColumnss];
+        console.log(this.displayedColumns);
       });
   }
 
@@ -29,14 +40,23 @@ export class BloglistComponent implements OnInit, OnDestroy {
   deleteblog(id: number) {
     this.http.deletePost(id).subscribe(
       (data) => {
+
         this.ngOnInit();
       }
     )
   }
 
-  modelOpen(id) {
-    console.log(id);
+
+  openDialog(id): void {
     this.common.BlogsId.next(id);
+    const dialogRef = this.dialog.open(BlogaddComponent, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllBlogs();
+
+    });
   }
 
   ngOnDestroy(): void {

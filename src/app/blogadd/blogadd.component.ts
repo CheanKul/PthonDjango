@@ -6,6 +6,7 @@ import { switchMap } from 'rxjs/operators';
 import { Blog } from '../Models/BlogModel';
 import { Observable } from 'rxjs';
 import { HttpService } from '../Shared/http.service';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-blogadd',
@@ -19,7 +20,7 @@ export class BlogaddComponent implements OnInit {
   paramid: Observable<Blog> = null;
   swapButton: boolean = false;
 
-  constructor(private route: ActivatedRoute,
+  constructor(public dialogRef: MatDialogRef<BlogaddComponent>, private route: ActivatedRoute,
     private router: Router, private fb: FormBuilder, private http: BlogaddService, private common: HttpService) {
     this.addPostFG = this.fb.group({
       Id: [''],
@@ -51,7 +52,7 @@ export class BlogaddComponent implements OnInit {
     this.http.addPosts(form.value).subscribe(
       (data) => {
         debugger;
-        this.router.navigateByUrl('/listblog');
+        this.dialogRef.close();
       }
     );
   }
@@ -59,7 +60,8 @@ export class BlogaddComponent implements OnInit {
   updateBlog(form) {
     console.log(form.value)
     this.http.updatePosts(form.value).subscribe((data) => {
-      this.router.navigate(['listblog/'])
+      this.dialogRef.close();
+
     });
   }
 
