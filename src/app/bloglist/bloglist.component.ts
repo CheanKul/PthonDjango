@@ -14,7 +14,7 @@ import { BlogaddComponent } from '../blogadd/blogadd.component';
 })
 export class BloglistComponent implements OnInit, OnDestroy {
 
-  displayedColumnss: string[] = ['Actions']
+  displayedColumnss: string[] = ['Actions'];
 
   dataSource: MatTableDataSource<Blog>;
   displayedColumns: string[];
@@ -30,7 +30,7 @@ export class BloglistComponent implements OnInit, OnDestroy {
     this.displayedColumns = [];
     this.http.getAllPosts().subscribe(
       (list: Blog[]) => {
-        this.dataSource = new MatTableDataSource(list);;
+        this.dataSource = new MatTableDataSource(list);
         this.displayedColumns = [...Object.keys(list[0]), ...this.displayedColumnss];
         console.log(this.displayedColumns);
       });
@@ -43,7 +43,7 @@ export class BloglistComponent implements OnInit, OnDestroy {
 
         this.ngOnInit();
       }
-    )
+    );
   }
 
 

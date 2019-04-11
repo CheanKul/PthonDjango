@@ -18,7 +18,7 @@ export class BlogaddComponent implements OnInit {
   addPostFG: FormGroup;
   blog$: Blog;
   paramid: Observable<Blog> = null;
-  swapButton: boolean = false;
+  swapButton = false;
 
   constructor(public dialogRef: MatDialogRef<BlogaddComponent>, private route: ActivatedRoute,
     private router: Router, private fb: FormBuilder, private http: BlogaddService, private common: HttpService) {
@@ -58,7 +58,7 @@ export class BlogaddComponent implements OnInit {
   }
 
   updateBlog(form) {
-    console.log(form.value)
+    console.log(form.value);
     this.http.updatePosts(form.value).subscribe((data) => {
       this.dialogRef.close();
 

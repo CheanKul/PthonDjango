@@ -10,11 +10,13 @@ const routes: Routes = [
   { path: 'updateblog/:id', component: BlogaddComponent },
   { path: 'updateblog', component: BlogaddComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', component: BlogComponent, pathMatch: "full" },
+  { path: '', component: BlogComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+}

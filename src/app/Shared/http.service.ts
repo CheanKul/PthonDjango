@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { map } from 'rxjs/operators';
 import { HttpXsrfCookieExtractor } from '@angular/common/http/src/xsrf';
 
 const headers = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
-    // 'Authorization': 'bearer ' + AppGlobal.getUser().token
-    'X-CSRFToken': document.cookie.split(';')[1].split('=')[1]
+    // 'Authorization': 'bearer ' + AppGlobal.getUser().token,
+    //'X-CSRFToken': document.cookie.split(';')[1].split('=')[1]
   })
 };
 
@@ -50,12 +50,14 @@ export class HttpService {
       .pipe(map((response: Response) => <any>response));
   }
 
-  auth(url: string,model): Observable<any> {
+  auth(url: string, model): Observable<any> {
     return this.httpClient.post(url, model, headers)
       .pipe(map((response: Response) => {
         console.log(response);
       }));
   }
 
-
+  getAuthorizationToken() {
+    return document.cookie.split(';')[1].split('=')[1];
+  }
 }

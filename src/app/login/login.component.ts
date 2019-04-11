@@ -25,9 +25,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form) {
-    this.http.auth("http://localhost:8000/api/authlogin/", form.value).subscribe(
+    this.http.auth('/api/auth/login/', form.value).subscribe(
       (data) => {
-        debugger;
         console.log(data);
       }
     );
