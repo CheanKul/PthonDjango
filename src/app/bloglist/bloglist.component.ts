@@ -30,6 +30,7 @@ export class BloglistComponent implements OnInit, OnDestroy {
     this.displayedColumns = [];
     this.http.getAllPosts().subscribe(
       (list: Blog[]) => {
+        debugger;
         this.dataSource = new MatTableDataSource(list);
         this.displayedColumns = [...Object.keys(list[0]), ...this.displayedColumnss];
         console.log(this.displayedColumns);
@@ -40,7 +41,6 @@ export class BloglistComponent implements OnInit, OnDestroy {
   deleteblog(id: number) {
     this.http.deletePost(id).subscribe(
       (data) => {
-
         this.ngOnInit();
       }
     );

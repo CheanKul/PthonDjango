@@ -12,14 +12,14 @@ export class BlogaddService {
   constructor(private http: HttpService) { }
 
   addPosts(model: Blog): Observable<Blog> {
-    return this.http.post('/api/posts/', model);
+    return this.http.post('/api/posts/posts/', model);
   }
 
   updatePosts(model): Observable<Blog> {
-    return this.http.put('/api/posts/' + model.Id + '/', model);
+    return this.http.put('/api/posts/posts/' + model.Id + '/', model);
   }
 
   getPost(id: number): Observable<Blog> {
-    return this.http.get('/api/posts/' + id + '/');
+    return this.http.get('/api/posts/posts/' + id + '/');
   }
 }

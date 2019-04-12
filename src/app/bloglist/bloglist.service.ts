@@ -12,10 +12,10 @@ export class BloglistService {
   constructor(private http: HttpService) { }
 
   getAllPosts(): Observable<Blog[]> {
-    return this.http.get('/api/posts/');
+    return this.http.get('/api/posts/posts/');
   }
 
   deletePost(id): Observable<Blog> {
-    return this.http.delete('/api/posts/' + id + '/');
+    return this.http.delete('/api/posts/posts/' + id + '/');
   }
 }

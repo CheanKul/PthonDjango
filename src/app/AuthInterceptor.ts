@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
         //const authToken = this.auth.getAuthorizationToken();
         const authReq = req.clone({
             setHeaders: {
-                //'Authorization': authToken,
+                'Authorization': ' JWT ' + localStorage.getItem('token'),
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
                 //'X-CSRFToken': document.cookie.split(';')[1].split('=')[1]

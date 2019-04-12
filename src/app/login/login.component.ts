@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpService } from '../Shared/http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginFG: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpService) {
+  constructor(private fb: FormBuilder, private http: HttpService, private router: Router) {
     this.loginFG = this.fb.group({
       username: ['', [Validators.required, Validators.maxLength(30)]],
       password: ['', [Validators.required, Validators.maxLength(30)]]
@@ -21,13 +22,17 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.loginFG.reset();
+
   }
 
   onSubmit(form) {
-    this.http.auth('/api/auth/login/', form.value).subscribe(
+    this.http.auth('api/auth/token', form.value).subscribe(
       (data) => {
-        console.log(data);
+
+        this.router.navigateByUrl('/listblog');
+
       }
     );
   }
